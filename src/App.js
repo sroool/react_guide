@@ -1,15 +1,39 @@
-import ExpenseItem from "./componets/ExpenseItem";
-
+import React from "react";
+import Expenses from "./componets/Expenses/Expenses";
 function App() {
   const expenses = [
-    {title: 'Car Insurance', amount: 294.69, date: new Date()},
-    {title: 'Cat Insurance', amount: 294.69, date: new Date()}
+    {
+      id: "e1",
+      title: "Toilet Paper",
+      amount: 94.12,
+      date: new Date(2020, 7, 14),
+    },
+    { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
+    {
+      id: "e3",
+      title: "Car Insurance",
+      amount: 294.67,
+      date: new Date(2021, 2, 28),
+    },
+    {
+      id: "e4",
+      title: "New Desk (Wooden)",
+      amount: 450,
+      date: new Date(2021, 5, 12),
+    },
   ];
+  //
+  // OLD WAY OF CREATING ELEMENTS USING REACT
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h2", {}, "LETS GET STARTED!"),
+  //   React.createElement(Expenses, { expenses: expenses })
+  // );
   return (
     <div>
       <h2>LETS GET STARTED!</h2>
-      {expenses.map( (e, i) => <ExpenseItem key={i} title={e['title']} amount={e['amount']} date={e['date']}></ExpenseItem>)}
-     
+      <Expenses expenses={expenses} />
     </div>
   );
 }
