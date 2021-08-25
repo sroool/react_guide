@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Expenses from "./componets/Expenses/Expenses";
 import NewExpense from "./componets/NewExpense/NewExpense";
 function App() {
-  const expenses = [
+  let [expenses, updateExpenses] = useState([
     {
       id: "e1",
       title: "Toilet Paper",
@@ -22,7 +22,14 @@ function App() {
       amount: 450,
       date: new Date(2021, 5, 12),
     },
-  ];
+  ]);
+
+  const addExpenseHandler = data => {
+    console.log('In App.js');
+    console.log(data)
+    console.log(typeof(expenses))
+    updateExpenses([...expenses,data])
+  };
   //
   // OLD WAY OF CREATING ELEMENTS USING REACT
   // return React.createElement(
@@ -33,7 +40,7 @@ function App() {
   // );
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses expenses={expenses} />
     </div>
   );
