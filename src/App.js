@@ -24,11 +24,11 @@ function App() {
     },
   ]);
 
-  const addExpenseHandler = data => {
-    console.log('In App.js');
-    console.log(data)
-    console.log(typeof(expenses))
-    updateExpenses([...expenses,data])
+  const addExpenseHandler = (data) => {
+    console.log("In App.js");
+    console.log(data);
+    console.log(typeof expenses);
+    updateExpenses((prevState) => [...prevState, data]);
   };
   //
   // OLD WAY OF CREATING ELEMENTS USING REACT
@@ -40,7 +40,7 @@ function App() {
   // );
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler}/>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses} />
     </div>
   );
